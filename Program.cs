@@ -1,10 +1,15 @@
+using System;
 
-    //Entrada de datos, nombre, distancia, hora
+public class Program
+{
+    public static void Main(string[] args)
+    {
+         //Entrada de datos, nombre, distancia, hora
     //Variables
 string nombre, nombreVehiculo;
-double distancia, tarifaBase, costoKM, subtotal, tarifafinal, descuento;
+double distancia, tarifaBase =0, costoKM =0, subtotal, tarifafinal, descuento =0.00;
 int hora, Tipo_de_vehículo;
-bool eshorapico;
+bool eshorapico = false;
 Console.WriteLine("Nombre del pasajero");
 nombre = Console.ReadLine ();
 
@@ -21,7 +26,7 @@ Console.WriteLine("3. Premium");
 Console.WriteLine("4. Moto");
 
 Console.WriteLine("Ingrese una opción");
-Tipo_de_vehículo = int.Parse(Console.ReadLine(""));
+Tipo_de_vehículo = int.Parse(Console.ReadLine());
 
 
 //Proceso  
@@ -29,19 +34,19 @@ Tipo_de_vehículo = int.Parse(Console.ReadLine(""));
 switch (Tipo_de_vehículo)
         {
             case 1:
-            nombreVehiculo = "confort";
+            nombreVehiculo = "Económico";
             tarifaBase =2.0;
             costoKM = 1.5;
             break;
 
             case 2:
-            nombreVehiculo = "confort";
+            nombreVehiculo = "Confort";
             tarifaBase =3.0;
             costoKM = 2.0;
             break;
 
             case 3:
-            nombreVehiculo = "confort";
+            nombreVehiculo = "Premium";
             tarifaBase =5.0;
             costoKM = 3.0;
             break;
@@ -64,19 +69,19 @@ subtotal = tarifaBase + costoKM * distancia;
 if((hora >= 7 && hora <= 9 ) || (hora >= 17 && hora <= 20))
 {
     eshorapico = true;
-    subtotal = subtotal * 1.30; //incremento del 30%
+    subtotal *=1.30; //incremento del 30%
 }
 
 //Descuento por distancia larga (5%)
-if (distancia > 15) ;
+if (distancia > 15)
 {
-    descuento = subtotal * 0.5;
-    subtotal= subtotal - descuento;
+    descuento = subtotal * 0.05;
+    subtotal-=descuento;
 }
 
 //Tarifa minima y redondeo
 
-tarifafinal = Math.Max(subtotal, 5.00);
+tarifafinal = Math.Max(subtotal, 5.0);
 tarifafinal = Math.Round(tarifafinal, 2);
 
 //Salida
@@ -94,13 +99,6 @@ if (descuento > 0){
     {
         Console.WriteLine("No aplica descuento");
     }
-Console.WriteLine("Tarifa final: s/ " + tarifafinal );
-
-
-
-
-
-
-
-
-
+Console.WriteLine("Tarifa final: s/ " + tarifafinal );   
+    }
+}
